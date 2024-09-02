@@ -1,15 +1,18 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import HomeScreen from './screens/HomeScreen';
+import RegisterScreen from './screens/authentication/RegisterScreen';
+import LoginScreen from './screens/authentication/LoginScreen';
 
 function App() {
-  return (
-    <div className="App">
-
-      <h1 className='text-3xl font-bold flex justify-center dark:bg-black bg-gray-100 dark:text-white text-black'>
-        Hello World
-      </h1>
-
-    </div>
+  return (    
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomeScreen />} />
+        <Route path="/register" element={<RegisterScreen />} />
+        <Route path="/login" element={<LoginScreen />} />
+      </Routes>
+    </Router>
   );
 }
 
