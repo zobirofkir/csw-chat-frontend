@@ -1,18 +1,19 @@
 import './App.css';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import HomeScreen from './screens/HomeScreen';
-import RegisterScreen from './screens/authentication/RegisterScreen';
-import LoginScreen from './screens/authentication/LoginScreen';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Layout from "./layout/Layout";
+import LoginScreen from "./screens/LoginScreen";
+import RegisterScreen from "./screens/RegisterScreen";
 
 function App() {
-  return (    
-    <Router>
+  return (
+    <BrowserRouter>
+    <Layout>
       <Routes>
-        <Route path="/" element={<HomeScreen />} />
-        <Route path="/register" element={<RegisterScreen />} />
-        <Route path="/login" element={<LoginScreen />} />
+        <Route path="/"  element={<LoginScreen/>}/>
+        <Route path="/register"  element={<RegisterScreen/>}/>
       </Routes>
-    </Router>
+    </Layout>
+    </BrowserRouter>
   );
 }
 
