@@ -10,7 +10,7 @@ const ResetPasswordScreen = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         await axios.post(`${process.env.REACT_APP_API_URL}/api/password/email`, { email });
-        toast.success('Password reset link has been sent to your email. Please check your email and follow the instructions to reset your password.');
+        toast.success('Password reset link has been sent to your email.');
         setTimeout(() => {
             navigate("/");
           }, 5000);
