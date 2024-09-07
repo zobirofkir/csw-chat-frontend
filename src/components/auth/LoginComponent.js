@@ -62,6 +62,15 @@ const LoginForm = () => {
       >
         Login
       </button>
+
+      <p className='text-sm text-gray-600'>
+        Don't have an account? <a href='/register' className='text-blue-500 hover:text-blue-700'>Register</a>
+      </p>
+
+      <p className='text-sm text-gray-600'>
+        Forget your password? <a href='/forgot-password' className='text-blue-500 hover:text-blue-700'>Reset Password</a>
+      </p>
+
     </form>
     </>
   );

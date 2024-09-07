@@ -69,6 +69,15 @@ const RegisterForm = () => {
       >
         Register
       </button>
+
+      <p className='text-sm text-gray-600'>
+        Allready have an account? <a href='/' className='text-blue-500 hover:text-blue-700'>Login</a>
+      </p>
+
+      <p className='text-sm text-gray-600'>
+        Forget your password? <a href='/forgot-password' className='text-blue-500 hover:text-blue-700'>Reset Password</a>
+      </p>
+
     </form>
     </>
   );
