@@ -17,7 +17,7 @@ const HeaderDashboardComponent = () => {
   };
 
   return (
-    <div className='flex flex-col md:flex-row justify-between items-center m-5 rounded-md bg-blue-300'>
+    <div className='flex flex-col md:flex-row justify-between items-center m-5 rounded-md'>
       <h1 className='md:text-2xl text-md font-bold p-4 text-black uppercase hidden md:block'>
           <a href='/dashboard'>{name}</a>  
       </h1>
@@ -39,17 +39,17 @@ const HeaderDashboardComponent = () => {
 
           {/* Dropdown Menu */}
           {isOpen && (
-            <ul className='absolute right-0 top-full mt-2 bg-blue-200 rounded-md shadow-lg w-48'>
-              <li className='p-2 hover:bg-blue-300 cursor-pointer'>
+            <ul className='absolute right-0 top-full mt-2 bg-gray-200 rounded-md shadow-lg w-48'>
+              <li className='p-2 hover:bg-gray-800 hover:text-white cursor-pointer'>
                 <a href='/dashboard'>{name}</a>
               </li>
-              <li className='p-2 hover:bg-blue-300 cursor-pointer'>
+              <li className='p-2 hover:bg-gray-800 hover:text-white cursor-pointer'>
                 <a href='/profile'>Profile</a>
               </li>
-              <li className='p-2 hover:bg-blue-300 cursor-pointer'>
+              <li className='p-2 hover:bg-gray-800 hover:text-white cursor-pointer'>
                 <a href='/settings'>Settings</a>
               </li>
-              <li className='p-2 hover:bg-blue-300 cursor-pointer' onClick={handleLogout}>Logout</li>
+              <li className='p-2 hover:bg-gray-800 hover:text-white cursor-pointer' onClick={handleLogout}>Logout</li>
             </ul>
           )}
         </div>
