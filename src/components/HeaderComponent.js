@@ -39,10 +39,10 @@ const HeaderComponent = () => {
                 id="navbar-default">
             <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border rounded-lg bg-white md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white">
               <li>
-                <a href="/register" className="block py-2 px-3 text-blue-600 rounded md:bg-transparent md:p-0 dark:text-blue-500 text-bold text-xl" aria-current="page">Register</a>
+                <a href="/register" className="block py-2 px-3 text-blue-600 rounded md:bg-transparent md:p-0 dark:text-blue-500 text-bold text-md" aria-current="page">Register</a>
               </li>
               <li>
-                <a href="/" className="block py-2 px-3 text-blue-600 rounded md:bg-transparent md:p-0 dark:text-blue-500 text-bold text-xl">Login</a>
+                <a href="/" className="block py-2 px-3 text-blue-600 rounded md:bg-transparent md:p-0 dark:text-blue-500 text-bold text-md">Login</a>
               </li>
             </ul>
           </div>

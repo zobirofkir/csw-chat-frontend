@@ -1,14 +1,14 @@
 import React from 'react';
-import LoginComponent from '../components/auth/LoginComponent';
+import RegisterComponent from '../../components/auth/RegisterComponent';
 
-const LoginScreen = () => {
+const RegisterScreen = () => {
   return (
     <div className='flex justify-center items-center min-h-screen'>
       <div className='w-screen max-w-md p-6 bg-white rounded-lg shadow-lg'>
-        <LoginComponent />
+        <RegisterComponent />
       </div>
     </div>
   );
 }
 
-export default LoginScreen;
+export default RegisterScreen;
