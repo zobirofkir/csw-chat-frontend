@@ -1,21 +1,5 @@
-import React, { useState } from 'react';
-
-const users = [
-  { id: 1, name: 'Steve', lastMessage: 'Hi Charles', time: '1:56 PM', status: 'Online' },
-  { id: 2, name: 'Alice', lastMessage: 'See you soon', time: '12:45 PM', status: 'Offline' },
-  { id: 3, name: 'Alice', lastMessage: 'See you soon', time: '12:45 PM', status: 'Offline' },
-  { id: 4, name: 'Alice', lastMessage: 'See you soon', time: '12:45 PM', status: 'Offline' },
-  { id: 5, name: 'Alice', lastMessage: 'See you soon', time: '12:45 PM', status: 'Offline' },
-  { id: 6, name: 'Alice', lastMessage: 'See you soon', time: '12:45 PM', status: 'Offline' },
-  { id: 7, name: 'Alice', lastMessage: 'See you soon', time: '12:45 PM', status: 'Offline' },
-  { id: 8, name: 'Alice', lastMessage: 'See you soon', time: '12:45 PM', status: 'Offline' },
-  { id: 9, name: 'Alice', lastMessage: 'See you soon', time: '12:45 PM', status: 'Offline' },
-  { id: 10, name: 'Alice', lastMessage: 'See you soon', time: '12:45 PM', status: 'Offline' },
-  { id: 11, name: 'Alice', lastMessage: 'See you soon', time: '12:45 PM', status: 'Offline' },
-  { id: 12, name: 'Alice', lastMessage: 'See you soon', time: '12:45 PM', status: 'Offline' },
-  { id: 13, name: 'Alice', lastMessage: 'See you soon', time: '12:45 PM', status: 'Offline' },
-  // Add more users if needed
-];
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 
 const initialMessages = {
   1: [
@@ -31,6 +15,7 @@ const DashboardScreen = () => {
   const [selectedUser, setSelectedUser] = useState(null);
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState(initialMessages);
+  const [users, setUsers] = useState([]);
 
   const handleSendMessage = () => {
     if (message.trim() === '') return;
@@ -55,6 +40,20 @@ const DashboardScreen = () => {
     window.location.href = '/dashboard';
   };
 
+  const fetchUsers = async () => {
+    const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/auth/users`, { headers: 
+      { Authorization: `Bearer ${localStorage.getItem("token")}` } 
+    });
+    setUsers(response.data.data);
+    console.log(response.data.data);
+  }
+
+  useEffect(() => {
+    fetchUsers();
+  }, [])
+
+
+
   return (
     <div className="h-full w-full flex flex-col lg:flex-row">
       {/* Sidebar (User List) */}
@@ -71,18 +70,28 @@ const DashboardScreen = () => {
 
           {/* Users List */}
           <div className="overflow-y-auto h-[calc(100vh-128px)]">
-            {users.map((user) => (
+            {Array.isArray(users) && users.map((user) => (
               <div
                 key={user.id}
                 className={`flex items-center p-4 cursor-pointer hover:bg-gray-100 ${selectedUser?.id === user.id ? 'bg-gray-200' : ''}`}
                 onClick={() => handleUserClick(user)}
               >
-                <div className="w-10 h-10 bg-gray-300 rounded-full"></div>
+                {users.image ? (
+                    <img
+                    src={user.image}
+                    alt={`${user.name}'s profile`}
+                    className="w-10 h-10 bg-gray-300 rounded-full"
+                  />
+
+                ) : (
+                  <div className="w-10 h-10 bg-gray-300 rounded-full"></div>
+                )}
+
                 <div className="ml-4 flex-1">
                   <h3 className="text-md font-semibold text-blue-500">{user.name}</h3>
                   <p className="text-sm text-gray-500 truncate text-blue-800">{user.lastMessage}</p>
                 </div>
-                <div className="text-xs text-blue-500">{user.time}</div>
+                <div className="text-xs text-blue-500">{user.timestamp}</div>
               </div>
             ))}
           </div>
